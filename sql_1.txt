@@ -1,0 +1,81 @@
+# Tạo database
+create database node38;
+
+# Tạo table
+# Quy tắc đặt tên table:
+# 1: Không đặt tên table trùng với keyword của mysql: create, table,...
+# 2: Tên table không chứa ký tự đặc biệt: #!@%,...
+# 3: Tên phải liền nhau: rạp phim -> rap_phim
+# 4: Tên không được có dấu.
+# Datatype có kiểu dữ liệu chính: số(number), chữ(string), boolean
+
+
+create table users(
+	full_name varchar(30),
+	email varchar(30),
+	age int, 
+	gender int,
+	address varchar(100)
+)
+
+# Thêm column vào table
+alter table users -- Chỉ định table mà 
+
+mình muốn sửa
+Modify COLUMN tinh_trang_hon_nhan varchar(255)
+
+# Sửa datatype của column
+alter table users
+Modify COLUMN address varchar(255)
+
+
+create table phim(
+	ten_phim varchar(30),
+	rating int,
+	mo_ta varchar(255),
+	thoi_luong int
+)
+
+# Tạo data (row)
+INSERT INTO users (full_name, email, age, gender, address, tinh_trang_hon_nhan) 
+VALUES 
+	('Thanh Phan', 'thphan1408@gmail.com', 24, 1, 'Go Vap', 'Doc than'),
+	('Ngoc Nguyen', 'ngoc.nguyen@example.com', 30, 0, 'Quan 1', 'Da ket hon'),
+    ('Hien Tran', 'hien.tran@example.com', 28, 1, 'Quan 7', 'Doc than'),
+    ('Linh Vo', 'linh.vo@example.com', 35, 0, 'Binh Thanh', 'Da ket hon'),
+    ('Nam Le', 'nam.le@example.com', 22, 1, 'Tan Binh', 'Doc than');
+
+INSERT INTO phim (ten_phim, rating, mo_ta, thoi_luong)
+VALUES
+    ('Phim 1', 8, 'Mô tả phim 1', 120),
+    ('Phim 2', 7, 'Mô tả phim 2', 105),
+    ('Phim 3', 9, 'Mô tả phim 3', 150),
+    ('Phim 4', 6, 'Mô tả phim 4', 95),
+    ('Phim 5', 8, 'Mô tả phim 5', 130);
+
+select * from users
+where age BETWEEN 30 and 35 -- Điều kiện lấy dữ liệu
+-- between ... and ...
+-- tăng dần: asc
+-- giảm dần: desc
+order by age USER_DEFINED_TYPE_SCHEMA
+
+
+# Tìm tất cả những người có chữ D
+select * from users
+where full_name like '%t%' 
+-- like tìm kiếm tương đối %<full_name>% hoặc %<full_name> và <full_name>%
+
+
+# Update data
+# update, delete -> phải có where
+
+UPDATE users 
+SET full_name = 'Linh Thai'
+WHERE email = 'linh.vo@example.com' -- Buộc phải có
+
+# Delete data
+DELETE FROM users
+WHERE age = 22
+
+select * from users
